@@ -5,6 +5,16 @@ var fs = require('fs');
 var books = [];
 var $;
 
+fs.readFile('../data/book1.html', 'utf8', function(err, data){
+  if(!err) {
+    $ = cheerio.load(data)
+    var title = $('#btAsinTitle');
+    var titleText = title.text();
+  }
+  // console.log(title, $);
+  console.log(titleText);
+});
+
 var routes = express.Router();
 var assetFolder = Path.resolve(__dirname, '../client');
 routes.use(express.static(assetFolder));
